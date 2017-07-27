@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 加载propertis配置文件-->
+    <!--<bean id="settingLocation" class="org.springframework.beans.factory.config.PropertiesFactoryBean">-->
+        <!--<property name="locations">-->
+            <!--<list>-->
+                <!--<value></value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!-- dataSource Config By C3p0 Connection Pool-->
+    <!-- 从 http://www.mchange.com/projects/c3p0/#basic_pool_configuration 摘录-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driverClassName}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!-- 连接的最大空闲时间-->
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>
+        <!-- 连接池中的最小连接数-->
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"/>
+        <!-- 连接池中的最大连接数-->
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+        <!-- 连接池初始化时获取连接数量 一般在min-maxpoolsize中间-->
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+        <!-- 无空闲连接时，一次性可以创建的连接数量-->
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"/>
+        <!-- 两次连接中间隔时间,单位毫秒,连接池在获得新连接时的间隔时间。default : 1000 单位ms-->
+        <property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:/mybatis/sqlMapConfig.xml"/>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:com/dj/stis/dao/tis/xml/*Mapper.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.dj.stis.d.tis.iface" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+</beans>
