@@ -19,6 +19,27 @@
 
     <dependencies>
 
+        <!--PDF Utils-->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.10</version>
+        </dependency>
+
+        <!--PDF Font-->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-asian</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+
+        <!--PDF Box-->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.6</version>
+        </dependency>
+
         <!--Jedis Redis Client-->
         <dependency>
             <groupId>redis.clients</groupId>

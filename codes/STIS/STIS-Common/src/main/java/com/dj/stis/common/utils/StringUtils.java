@@ -94,4 +94,11 @@ public class StringUtils {
         return !StringUtils.isBlank(str);
     }
 
+    public static String getSpace(int count) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            sb.append(" ");
+        }
+        return sb.toString();
+    }
 }
