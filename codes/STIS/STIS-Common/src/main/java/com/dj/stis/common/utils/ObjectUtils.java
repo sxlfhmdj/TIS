@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * Description: 【方法功能中文描述】 <br/>
+ * Description: 【Object工具类】 <br/>
  * Created on 9:24 2017/6/5 <br/>
  *
  */
