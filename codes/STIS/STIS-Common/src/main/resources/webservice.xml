@@ -1,1 +1,11 @@
-<
+<?xml version='1.0' encoding='UTF-8' ?>
+<root>
+    <!-- WebService Config -->
+    <interface id="1" name="interface_name" explain="interface_explain">
+        <wsdlLocation>http://fy.webxml.com.cn/webservices/EnglishChinese.asmx?wsdl</wsdlLocation>
+        <operaionName>EnglishChineseSoap</operaionName>
+        <portName></portName>
+        <request></request>
+        <response></response>
+    </interface>
+</root>
